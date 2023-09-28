@@ -18,7 +18,7 @@ public class Main {
                 .configure()
                 .buildSessionFactory();
 
-//        sessionFactory.getSchemaManager().exportMappedObjects(true);
+        sessionFactory.getSchemaManager().exportMappedObjects(true);
 
 
         var service = new ToDoService();
@@ -43,7 +43,7 @@ public class Main {
             } else if (input.startsWith("c ")) {
                 int id = Integer.parseInt(input.substring(2));
                 service.completeItem(id);
-            } else if (input.startsWith("v")) {
+            } else if (input.startsWith("v") || input.equals("ls")) {
                 printToDoList();
             } else if (input.startsWith("h")) {
                 printToDoHistory();

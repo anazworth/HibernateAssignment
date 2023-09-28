@@ -89,7 +89,7 @@ public class ToDoService {
 
         sb.append("\n\t");
         sb.append("Created: ");
-        sb.append(item.getDateCompleted());
+        sb.append(item.getDateCreated());
         if (item.getCompleted()) {
             sb.append("\t Completed: ");
             sb.append(item.getDateCompleted());
