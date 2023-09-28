@@ -35,7 +35,7 @@ public class ToDoService {
         System.out.println("\n" + BG_GREEN + "Completed Tasks:");
         System.out.println(ANSI_RESET);
 
-        for (ToDoItem item : repository.getAllCompletedItems()) {
+        for (ToDoItem item : repository.getAllItems()) {
             System.out.println(lineBuilder(item));
         }
     }
@@ -44,7 +44,7 @@ public class ToDoService {
         System.out.println("\n" + BG_YELLOW + "Items:");
         System.out.println(ANSI_RESET);
 
-        for (ToDoItem item : repository.getAllItems()) {
+        for (ToDoItem item : repository.getAllUncompletedItems()) {
             System.out.println(lineBuilder(item));
         }
     }

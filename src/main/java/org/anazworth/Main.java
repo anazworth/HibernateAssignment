@@ -1,14 +1,10 @@
 package org.anazworth;
 
-import org.hibernate.Session;
-import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
-import java.util.Date;
 import java.util.Scanner;
 
 import static org.anazworth.ToDoService.*;
-import static org.hibernate.cfg.AvailableSettings.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -53,33 +49,6 @@ public class Main {
                 System.out.println("Invalid command.");
             }
 
-//            System.out.print(ANSI_CYAN + "\n> " + ANSI_RESET);
-//            input= scanner.nextLine();
-
-//            switch (input) {
-//                case "help" -> helpPrompt();
-//                case "a" -> {
-//                    System.out.println("Enter task:");
-//                    String task = System.console().readLine();
-//                    service.addItem(task);
-//                }
-//                case "r" -> {
-//                    System.out.println("Enter task id:");
-//                    int id = Integer.parseInt(System.console().readLine());
-//                    service.removeItem(id);
-//                }
-//                case "c" -> {
-//                    System.out.println("Enter task id:");
-//                    int id = Integer.parseInt(System.console().readLine());
-//                    service.completeItem(id);
-//                }
-//                case "v" -> ToDoService.printToDoList();
-//                case "h" -> ToDoService.printToDoHistory();
-//                case "exit" -> System.exit(0);
-//                default -> System.out.println("Invalid command.");
-//
-//            }
-
-    }
+        }
     }
 }

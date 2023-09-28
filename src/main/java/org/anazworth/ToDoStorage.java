@@ -8,7 +8,6 @@ public interface ToDoStorage {
     void addItem(ToDoItem item);
     void completeItem(int id);
     void removeItem(int id);
-    List<ToDoItem> getAllCompletedItems();
 
     List<ToDoItem> getAllUncompletedItems();
 }

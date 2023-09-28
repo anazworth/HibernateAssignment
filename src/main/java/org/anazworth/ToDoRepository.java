@@ -84,17 +84,17 @@ public class ToDoRepository implements ToDoStorage {
         }
     }
 
-    @Override
-    public List<ToDoItem> getAllCompletedItems() {
-        try {
-            Session session = sessionFactory.openSession();
-            session.beginTransaction();
-            var items = session.createQuery("from ToDoItem where completed = true", ToDoItem.class).list();
-            session.getTransaction().commit();
-            return items;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
+//    @Override
+//    public List<ToDoItem> getAllItems() {
+//        try {
+//            Session session = sessionFactory.openSession();
+//            session.beginTransaction();
+//            var items = session.createQuery("from ToDoItem where completed = true", ToDoItem.class).list();
+//            session.getTransaction().commit();
+//            return items;
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            return null;
+//        }
+//    }
 }
