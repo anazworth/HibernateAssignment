@@ -9,20 +9,31 @@ public class ToDoService {
         repository = new ToDoRepository();
     }
 
-    public void addItem(String task) {
+    public ToDoService(ToDoRepository repository) {
+        ToDoService.repository = repository;
+    }
+
+    public ToDoItem addItem(String task) {
         ToDoItem item = new ToDoItem();
         item.setTask(task);
         item.setDateCreated(new java.util.Date().toString());
         item.setCompleted(false);
         repository.addItem(item);
+        return item;
     }
 
-    public void completeItem(int id) {
-        repository.completeItem(id);
+    public ToDoItem completeItem(int id) {
+        ToDoItem item = repository.getItemById(id);
+        item.setCompleted(true);
+        item.setDateCompleted(new java.util.Date().toString());
+        repository.updateItem(item);
+        return item;
     }
 
-    public void removeItem(int id) {
-        repository.removeItem(id);
+    public ToDoItem removeItem(int id) {
+        ToDoItem item = repository.getItemById(id);
+        repository.deleteItem(item);
+        return item;
     }
 
     public static void initialGreeting() {

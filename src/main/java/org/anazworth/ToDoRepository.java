@@ -42,13 +42,10 @@ public class ToDoRepository implements ToDoStorage {
     }
 
     @Override
-    public void completeItem(int id) {
+    public void updateItem(ToDoItem item) {
         try {
             Session session = sessionFactory.openSession();
             session.beginTransaction();
-            var item = session.get(ToDoItem.class, id);
-            item.setCompleted(true);
-            item.setDateCompleted(new Date().toString());
             session.merge(item);
             session.getTransaction().commit();
         } catch (Exception e) {
@@ -57,16 +54,28 @@ public class ToDoRepository implements ToDoStorage {
     }
 
     @Override
-    public void removeItem(int id) {
+    public void deleteItem(ToDoItem item) {
         try {
             Session session = sessionFactory.openSession();
             session.beginTransaction();
-            var item = session.get(ToDoItem.class, id);
             session.remove(item);
             session.getTransaction().commit();
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
 
+    @Override
+    public ToDoItem getItemById(int id) {
+        try {
+            Session session = sessionFactory.openSession();
+            session.beginTransaction();
+            var item = session.get(ToDoItem.class, id);
+            session.getTransaction().commit();
+            return item;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
         }
     }
 
@@ -83,18 +92,4 @@ public class ToDoRepository implements ToDoStorage {
             return null;
         }
     }
-
-//    @Override
-//    public List<ToDoItem> getAllItems() {
-//        try {
-//            Session session = sessionFactory.openSession();
-//            session.beginTransaction();
-//            var items = session.createQuery("from ToDoItem where completed = true", ToDoItem.class).list();
-//            session.getTransaction().commit();
-//            return items;
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            return null;
-//        }
-//    }
 }
